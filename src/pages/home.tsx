@@ -1,11 +1,13 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { Header } from "./Header";
+import { v4 as uuidv4 } from "uuid";
+
+import { Header } from "../components/Header";
 
 import { Sword, Swords } from "lucide-react";
 
-export default function Start() {
+export default function Home() {
   const [showDifficulty, setShowDifficulty] = useState(false);
   const navigate = useNavigate();
 
@@ -13,12 +15,18 @@ export default function Start() {
     setShowDifficulty(true);
   };
 
-  const startGame = (difficulty: "easy" | "medium" | "hard") => {
-    navigate(`/game?difficulty=${difficulty}`);
+  const handleMultiplayerClick = () => {
+    const roomId = uuidv4();
+
+    navigate(`/waiting-room/${roomId}`);
+  };
+
+  const startGame = (difficulty: "easy" | "medium" | "hard" | "impossible") => {
+    navigate(`/game?difficulty=${difficulty}&mode=single`);
   };
 
   return (
-    <div className="flex w-full max-w-4xl flex-col items-center justify-center">
+    <div className="w-full max-w-4xl px-4 py-8">
       <Header />
 
       <div className="flex flex-col items-center gap-4">
@@ -33,10 +41,13 @@ export default function Start() {
               className="bg-primary text-secondary flex items-center gap-2 rounded-lg p-2 font-medium transition-all hover:brightness-90"
               onClick={handleSinglePlayerClick}
             >
-              <Sword className="size-4" /> 1 player
+              <Sword className="size-4" /> Singleplayer
             </button>
-            <button className="bg-primary text-secondary flex items-center gap-2 rounded-lg p-2 font-medium transition-all hover:brightness-90">
-              <Swords className="size-4" /> 2 players
+            <button
+              className="bg-primary text-secondary flex items-center gap-2 rounded-lg p-2 font-medium transition-all hover:brightness-90"
+              onClick={handleMultiplayerClick}
+            >
+              <Swords className="size-4" /> Multiplayer
             </button>
           </div>
         ) : (
