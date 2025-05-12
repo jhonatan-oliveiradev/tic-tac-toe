@@ -58,7 +58,7 @@ export default function WaitingRoom() {
   };
 
   return (
-    <div className="flex h-auto min-h-[50vh] flex-col items-center justify-center gap-4 rounded-4xl bg-zinc-950 px-12 shadow-lg">
+    <div className="flex h-auto min-h-[40vh] flex-col items-center justify-center gap-4 rounded-4xl bg-zinc-950/50 px-12 shadow-lg">
       <h1 className="text-3xl font-bold text-white">Waiting Room</h1>
       <p className="text-zinc-400">
         Room ID: <span className="font-mono text-zinc-300">{roomId}</span>
@@ -92,7 +92,7 @@ export default function WaitingRoom() {
         {ready ? "Waiting..." : "Ready!"}
       </button>
 
-      <p className="text-sm text-zinc-400">{playersReady} / 2 players ready</p>
+      <p className="text-sm text-zinc-400">{playersReady}/2 players ready</p>
     </div>
   );
 }

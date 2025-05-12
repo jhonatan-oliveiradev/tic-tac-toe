@@ -26,7 +26,7 @@ export default function Home() {
   };
 
   return (
-    <div className="w-full max-w-4xl px-4 py-8">
+    <div className="mx-auto w-full max-w-4xl">
       <Header />
 
       <div className="flex flex-col items-center gap-4">

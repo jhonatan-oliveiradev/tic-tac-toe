@@ -1,17 +1,18 @@
-import { doc, setDoc, Timestamp } from "firebase/firestore";
-import { db } from "./firebase-config";
+import { ref, set } from "firebase/database";
+import { rtdb } from "./firebase-config";
+import { v4 as uuidv4 } from "uuid";
 
 export const createGame = async (playerId: string) => {
-  const gameId = `game-${Date.now()}`; // ID único para o jogo
-  const gameRef = doc(db, "games", gameId);
+  const gameId = `game-${uuidv4()}`;
+  const gameRef = ref(rtdb, `games/${gameId}`);
 
-  await setDoc(gameRef, {
+  await set(gameRef, {
     board: Array(9).fill(null),
-    currentPlayer: "X", // Jogador X começa
+    currentPlayer: "X",
     player1: playerId,
-    player2: null, // Aguardando segundo jogador
-    status: "waiting", // Aguardando o segundo jogador
-    createdAt: Timestamp.now(),
+    player2: null,
+    status: "waiting",
+    createdAt: { ".sv": "timestamp" },
   });
 
   return gameId;
