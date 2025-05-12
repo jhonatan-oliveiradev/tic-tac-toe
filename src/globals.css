@@ -1,0 +1,72 @@
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;600;700&display=swap");
+
+@import "tailwindcss";
+
+body {
+  font-family: "Ubuntu", sans-serif;
+}
+
+button {
+  cursor: pointer;
+}
+
+:root {
+  --primary: #cd0a44;
+  --secondary: #d4ec02;
+}
+
+.text-primary {
+  color: var(--primary);
+}
+
+.text-secondary {
+  color: var(--secondary);
+}
+
+.border-primary {
+  border-color: var(--primary);
+}
+
+.border-secondary {
+  border-color: var(--secondary);
+}
+
+.bg-primary {
+  background-color: var(--primary);
+}
+
+.bg-secondary {
+  background-color: var(--secondary);
+}
+
+.gradient-background {
+  background: linear-gradient(305deg, #010101, #181818, #181818, #010101);
+  background-size: 180% 180%;
+  animation: gradient-animation 18s ease infinite;
+}
+
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.fade-in {
+  animation: fade-in 0.7s ease-in-out infinite;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
