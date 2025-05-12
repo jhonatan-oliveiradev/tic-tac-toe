@@ -1,9 +1,10 @@
 import { ref, onValue } from "firebase/database";
 import { rtdb } from "./firebase-config";
+import { GameData } from "../types";
 
 export const listenGameState = (
   gameId: string,
-  onChange: (gameData: any) => void,
+  onChange: (gameData: GameData) => void,
 ) => {
   const gameRef = ref(rtdb, `games/${gameId}`);
 
